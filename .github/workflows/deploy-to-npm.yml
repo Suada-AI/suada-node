@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16' # You can change this to the version you're using
-          registry-url: 'https://github.com/Suada-AI/suada-node.git'
+          registry-url: 'https://registry.npmjs.org/'
 
       # Install dependencies
       - name: Install dependencies
