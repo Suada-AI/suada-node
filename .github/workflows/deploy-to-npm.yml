@@ -8,6 +8,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
 
     steps:
       # Checkout the repository
@@ -46,3 +49,10 @@ jobs:
             Check the npm package at [https://www.npmjs.com/package/YOUR_PACKAGE_NAME]
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create a Release
+        uses: elgohr/Github-Release-Action@v5
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          title: Release ${{ github.ref }}
+          tag: ${{ github.ref }}
