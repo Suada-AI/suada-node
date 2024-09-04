@@ -44,6 +44,6 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           draft: true
           tag_name: ${{ github.ref }}
-          title: Release ${{ github.ref }}
+          title: Release ${{ github.ref_name }}
           prerelease: false
-          automatic_release_tag: ${{ github.ref }}
+          automatic_release_tag: ${{ github.ref_name }}
