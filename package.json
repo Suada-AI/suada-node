@@ -1,0 +1,19 @@
+{
+  "name": "suada",
+  "version": "1.0.0",
+  "description": "The official TypeScript library for the Suada API",
+  "author": "Suada <hello@suada.ai>",
+  "repository": "github:suada-ai/suada-node",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "license": "Apache-2.0",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc && tsc -p tsconfig.esm.json",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^4.0 || ^5.0"
+  }
+}

@@ -1,0 +1,17 @@
+.gitignore
+.npmignore
+README.md
+package.json
+src/apis/ChatApi.ts
+src/apis/index.ts
+src/index.ts
+src/models/Completion.ts
+src/models/CompletionMessagesInner.ts
+src/models/CompletionResult.ts
+src/models/CompletionResultChoicesInner.ts
+src/models/CompletionResultChoicesInnerMessage.ts
+src/models/CompletionResultUsage.ts
+src/models/index.ts
+src/runtime.ts
+tsconfig.esm.json
+tsconfig.json
