@@ -8,11 +8,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      issues: write
-      deployments: write
-      discussions: write
+    permissions: write-all
 
     steps:
       # Checkout the repository
@@ -43,11 +39,11 @@ jobs:
       # Optional: Create GitHub release
       - name: Create a Release
         id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
           draft: true
+          tag_name: ${{ github.ref }}
+          title: Release ${{ github.ref }}
           prerelease: false
+          automatic_release_tag: ${{ github.ref }}
