@@ -100,58 +100,6 @@ Error codes are as followed:
 | >=500       | `InternalServerError`      |
 | N/A         | `APIConnectionError`       |
 
-### Timeouts
-
-Requests time out after 10 minutes by default. You can configure this with a `timeout` option:
-
-<!-- prettier-ignore -->
-```ts
-// Configure the default for all requests:
-const client = new Suada({
-  timeout: 20 * 1000, // 20 seconds (default is 10 minutes)
-});
-
-// Override per-request:
-await client.chat.completions.create({ messages: [{ role: 'user', content: 'How can I list all files in a directory using Python?' }], model: 'suada-v1' }, {
-  timeout: 5 * 1000,
-});
-```
-
-On timeout, an `APIConnectionTimeoutError` is thrown.
-
-Note that requests which time out will be [retried twice by default](#retries).
-
-## Auto-pagination
-
-List methods in the Suada API are paginated.
-You can use `for await … of` syntax to iterate through items across all pages:
-
-```ts
-async function fetchAllFineTuningJobs(params) {
-  const allFineTuningJobs = [];
-  // Automatically fetches more pages as needed.
-  for await (const fineTuningJob of client.fineTuning.jobs.list({ limit: 20 })) {
-    allFineTuningJobs.push(fineTuningJob);
-  }
-  return allFineTuningJobs;
-}
-```
-
-Alternatively, you can make request a single page at a time:
-
-```ts
-let page = await client.fineTuning.jobs.list({ limit: 20 });
-for (const fineTuningJob of page.data) {
-  console.log(fineTuningJob);
-}
-
-// Convenience methods are provided for manually paginating:
-while (page.hasNextPage()) {
-  page = page.getNextPage();
-  // ...
-}
-```
-
 ## Advanced Usage
 
 ### Logging and middleware
