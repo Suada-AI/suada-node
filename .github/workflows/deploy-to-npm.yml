@@ -8,6 +8,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions: write-all
 
     steps:
       # Checkout the repository
@@ -36,13 +37,13 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # Optional: Create GitHub release
-      - name: Create GitHub Release
-        uses: actions/create-release@v1
+      - name: Create a Release
+        id: create_release
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          draft: true
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            Published release ${{ github.ref }}
-            Check the npm package at [https://www.npmjs.com/package/YOUR_PACKAGE_NAME]
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          title: Release ${{ github.ref_name }}
+          prerelease: false
+          automatic_release_tag: ${{ github.ref_name }}
