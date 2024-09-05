@@ -26,7 +26,7 @@ import {
 } from '../models/index';
 
 export interface ChatCompletionsRequest {
-    completion: Completion;
+    Completion: Completion;
 }
 
 /**
@@ -39,7 +39,7 @@ export interface ChatApiInterface {
     /**
      * 
      * @summary Create chat completion
-     * @param {Completion} completion 
+     * @param {Completion} Completion 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatApiInterface
@@ -49,7 +49,7 @@ export interface ChatApiInterface {
     /**
      * Create chat completion
      */
-    chatCompletions(completion: Completion, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompletionResult>;
+    chatCompletions(Completion: Completion, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompletionResult>;
 
 }
 
@@ -62,10 +62,10 @@ export class ChatApi extends runtime.BaseAPI implements ChatApiInterface {
      * Create chat completion
      */
     async chatCompletionsRaw(requestParameters: ChatCompletionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CompletionResult>> {
-        if (requestParameters['completion'] == null) {
+        if (requestParameters['Completion'] == null) {
             throw new runtime.RequiredError(
-                'completion',
-                'Required parameter "completion" was null or undefined when calling chatCompletions().'
+                'Completion',
+                'Required parameter "Completion" was null or undefined when calling chatCompletions().'
             );
         }
 
@@ -88,7 +88,7 @@ export class ChatApi extends runtime.BaseAPI implements ChatApiInterface {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CompletionToJSON(requestParameters['completion']),
+            body: CompletionToJSON(requestParameters['Completion']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CompletionResultFromJSON(jsonValue));
@@ -97,8 +97,8 @@ export class ChatApi extends runtime.BaseAPI implements ChatApiInterface {
     /**
      * Create chat completion
      */
-    async chatCompletions(completion: Completion, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompletionResult> {
-        const response = await this.chatCompletionsRaw({ completion: completion }, initOverrides);
+    async chatCompletions(Completion: Completion, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompletionResult> {
+        const response = await this.chatCompletionsRaw({ Completion: Completion }, initOverrides);
         return await response.value();
     }
 

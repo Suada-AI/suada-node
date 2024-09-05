@@ -31,25 +31,25 @@ export interface CompletionResultChoicesInner {
      * @type {number}
      * @memberof CompletionResultChoicesInner
      */
-    _Index?: number;
+    index?: number;
     /**
      * 
      * @type {CompletionResultChoicesInnerMessage}
      * @memberof CompletionResultChoicesInner
      */
-    Message?: CompletionResultChoicesInnerMessage;
+    message?: CompletionResultChoicesInnerMessage;
     /**
      * 
      * @type {any}
      * @memberof CompletionResultChoicesInner
      */
-    Logprobs?: any | null;
+    logprobs?: any | null;
     /**
      * 
      * @type {string}
      * @memberof CompletionResultChoicesInner
      */
-    FinishReason?: string;
+    finishReason?: string;
 }
 
 /**
@@ -69,10 +69,10 @@ export function CompletionResultChoicesInnerFromJSONTyped(json: any, ignoreDiscr
     }
     return {
         
-        '_Index': json['index'] == null ? undefined : json['index'],
-        'Message': json['message'] == null ? undefined : CompletionResultChoicesInnerMessageFromJSON(json['message']),
-        'Logprobs': json['logprobs'] == null ? undefined : json['logprobs'],
-        'FinishReason': json['finish_reason'] == null ? undefined : json['finish_reason'],
+        'index': json['index'] == null ? undefined : json['index'],
+        'message': json['message'] == null ? undefined : CompletionResultChoicesInnerMessageFromJSON(json['message']),
+        'logprobs': json['logprobs'] == null ? undefined : json['logprobs'],
+        'finishReason': json['finish_reason'] == null ? undefined : json['finish_reason'],
     };
 }
 
@@ -82,10 +82,10 @@ export function CompletionResultChoicesInnerToJSON(value?: CompletionResultChoic
     }
     return {
         
-        'index': value['_Index'],
-        'message': CompletionResultChoicesInnerMessageToJSON(value['Message']),
-        'logprobs': value['Logprobs'],
-        'finish_reason': value['FinishReason'],
+        'index': value['index'],
+        'message': CompletionResultChoicesInnerMessageToJSON(value['message']),
+        'logprobs': value['logprobs'],
+        'finish_reason': value['finishReason'],
     };
 }
 
