@@ -26,7 +26,7 @@ import {
 } from '../models/index';
 
 export interface ChatCompletionsRequest {
-    completion: Completion;
+    Completion: Completion;
 }
 
 /**
@@ -39,7 +39,7 @@ export interface ChatApiInterface {
     /**
      * 
      * @summary Create chat completion
-     * @param {Completion} completion 
+     * @param {Completion} Completion 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatApiInterface
@@ -62,10 +62,10 @@ export class ChatApi extends runtime.BaseAPI implements ChatApiInterface {
      * Create chat completion
      */
     async chatCompletionsRaw(requestParameters: ChatCompletionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CompletionResult>> {
-        if (requestParameters['completion'] == null) {
+        if (requestParameters['Completion'] == null) {
             throw new runtime.RequiredError(
-                'completion',
-                'Required parameter "completion" was null or undefined when calling chatCompletions().'
+                'Completion',
+                'Required parameter "Completion" was null or undefined when calling chatCompletions().'
             );
         }
 
@@ -88,7 +88,7 @@ export class ChatApi extends runtime.BaseAPI implements ChatApiInterface {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CompletionToJSON(requestParameters['completion']),
+            body: CompletionToJSON(requestParameters['Completion']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CompletionResultFromJSON(jsonValue));

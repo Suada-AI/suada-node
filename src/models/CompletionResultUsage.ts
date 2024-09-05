@@ -24,19 +24,19 @@ export interface CompletionResultUsage {
      * @type {number}
      * @memberof CompletionResultUsage
      */
-    promptTokens?: number;
+    PromptTokens?: number;
     /**
      * 
      * @type {number}
      * @memberof CompletionResultUsage
      */
-    completionTokens?: number;
+    CompletionTokens?: number;
     /**
      * 
      * @type {number}
      * @memberof CompletionResultUsage
      */
-    totalTokens?: number;
+    TotalTokens?: number;
 }
 
 /**
@@ -56,9 +56,9 @@ export function CompletionResultUsageFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'promptTokens': json['prompt_tokens'] == null ? undefined : json['prompt_tokens'],
-        'completionTokens': json['completion_tokens'] == null ? undefined : json['completion_tokens'],
-        'totalTokens': json['total_tokens'] == null ? undefined : json['total_tokens'],
+        'PromptTokens': json['prompt_tokens'] == null ? undefined : json['prompt_tokens'],
+        'CompletionTokens': json['completion_tokens'] == null ? undefined : json['completion_tokens'],
+        'TotalTokens': json['total_tokens'] == null ? undefined : json['total_tokens'],
     };
 }
 
@@ -68,9 +68,9 @@ export function CompletionResultUsageToJSON(value?: CompletionResultUsage | null
     }
     return {
         
-        'prompt_tokens': value['promptTokens'],
-        'completion_tokens': value['completionTokens'],
-        'total_tokens': value['totalTokens'],
+        'prompt_tokens': value['PromptTokens'],
+        'completion_tokens': value['CompletionTokens'],
+        'total_tokens': value['TotalTokens'],
     };
 }
 

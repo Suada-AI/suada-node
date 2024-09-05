@@ -37,43 +37,43 @@ export interface CompletionResult {
      * @type {string}
      * @memberof CompletionResult
      */
-    id?: string;
+    Id?: string;
     /**
      * 
      * @type {string}
      * @memberof CompletionResult
      */
-    object?: string;
+    Object?: string;
     /**
      * 
      * @type {number}
      * @memberof CompletionResult
      */
-    created?: number;
+    Created?: number;
     /**
      * 
      * @type {string}
      * @memberof CompletionResult
      */
-    model?: string;
+    Model?: string;
     /**
      * 
      * @type {string}
      * @memberof CompletionResult
      */
-    systemFingerprint?: string;
+    SystemFingerprint?: string;
     /**
      * 
      * @type {Array<CompletionResultChoicesInner>}
      * @memberof CompletionResult
      */
-    choices?: Array<CompletionResultChoicesInner>;
+    Choices?: Array<CompletionResultChoicesInner>;
     /**
      * 
      * @type {CompletionResultUsage}
      * @memberof CompletionResult
      */
-    usage?: CompletionResultUsage;
+    Usage?: CompletionResultUsage;
 }
 
 /**
@@ -93,13 +93,13 @@ export function CompletionResultFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'id': json['id'] == null ? undefined : json['id'],
-        'object': json['object'] == null ? undefined : json['object'],
-        'created': json['created'] == null ? undefined : json['created'],
-        'model': json['model'] == null ? undefined : json['model'],
-        'systemFingerprint': json['system_fingerprint'] == null ? undefined : json['system_fingerprint'],
-        'choices': json['choices'] == null ? undefined : ((json['choices'] as Array<any>).map(CompletionResultChoicesInnerFromJSON)),
-        'usage': json['usage'] == null ? undefined : CompletionResultUsageFromJSON(json['usage']),
+        'Id': json['id'] == null ? undefined : json['id'],
+        'Object': json['object'] == null ? undefined : json['object'],
+        'Created': json['created'] == null ? undefined : json['created'],
+        'Model': json['model'] == null ? undefined : json['model'],
+        'SystemFingerprint': json['system_fingerprint'] == null ? undefined : json['system_fingerprint'],
+        'Choices': json['choices'] == null ? undefined : ((json['choices'] as Array<any>).map(CompletionResultChoicesInnerFromJSON)),
+        'Usage': json['usage'] == null ? undefined : CompletionResultUsageFromJSON(json['usage']),
     };
 }
 
@@ -109,13 +109,13 @@ export function CompletionResultToJSON(value?: CompletionResult | null): any {
     }
     return {
         
-        'id': value['id'],
-        'object': value['object'],
-        'created': value['created'],
-        'model': value['model'],
-        'system_fingerprint': value['systemFingerprint'],
-        'choices': value['choices'] == null ? undefined : ((value['choices'] as Array<any>).map(CompletionResultChoicesInnerToJSON)),
-        'usage': CompletionResultUsageToJSON(value['usage']),
+        'id': value['Id'],
+        'object': value['Object'],
+        'created': value['Created'],
+        'model': value['Model'],
+        'system_fingerprint': value['SystemFingerprint'],
+        'choices': value['Choices'] == null ? undefined : ((value['Choices'] as Array<any>).map(CompletionResultChoicesInnerToJSON)),
+        'usage': CompletionResultUsageToJSON(value['Usage']),
     };
 }
 

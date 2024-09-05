@@ -24,13 +24,13 @@ export interface CompletionResultChoicesInnerMessage {
      * @type {string}
      * @memberof CompletionResultChoicesInnerMessage
      */
-    role?: string;
+    Role?: string;
     /**
      * 
      * @type {string}
      * @memberof CompletionResultChoicesInnerMessage
      */
-    content?: string;
+    Content?: string;
 }
 
 /**
@@ -50,8 +50,8 @@ export function CompletionResultChoicesInnerMessageFromJSONTyped(json: any, igno
     }
     return {
         
-        'role': json['role'] == null ? undefined : json['role'],
-        'content': json['content'] == null ? undefined : json['content'],
+        'Role': json['role'] == null ? undefined : json['role'],
+        'Content': json['content'] == null ? undefined : json['content'],
     };
 }
 
@@ -61,8 +61,8 @@ export function CompletionResultChoicesInnerMessageToJSON(value?: CompletionResu
     }
     return {
         
-        'role': value['role'],
-        'content': value['content'],
+        'role': value['Role'],
+        'content': value['Content'],
     };
 }
 

@@ -71,7 +71,7 @@ This library includes TypeScript definitions for all request params and response
 import Suada from 'suada';
 
 const client = new Suada({
-  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['SUADA_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {

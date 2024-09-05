@@ -1,12 +1,9 @@
 {
   "name": "suada",
-  "version": "1.0.0-rc8",
+  "version": "1.0.0-rc9",
   "description": "The official TypeScript library for the Suada API",
   "author": "Suada <hello@suada.ai>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Suada-AI/suada-node.git"
-  },
+  "repository": "github:suada-ai/suada-node",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "module": "./dist/esm/index.js",

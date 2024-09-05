@@ -24,19 +24,19 @@ export interface CompletionMessagesInner {
      * @type {string}
      * @memberof CompletionMessagesInner
      */
-    role?: CompletionMessagesInnerRoleEnum;
+    Role?: CompletionMessagesInnerRoleEnum;
     /**
      * The contents of the message.
      * @type {string}
      * @memberof CompletionMessagesInner
      */
-    content?: string;
+    Content?: string;
     /**
      * An optional name for the participant. Provides the model information to differentiate between participants of the same role.
      * @type {string}
      * @memberof CompletionMessagesInner
      */
-    name?: string | null;
+    Name?: string | null;
 }
 
 
@@ -68,9 +68,9 @@ export function CompletionMessagesInnerFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-        'role': json['role'] == null ? undefined : json['role'],
-        'content': json['content'] == null ? undefined : json['content'],
-        'name': json['name'] == null ? undefined : json['name'],
+        'Role': json['role'] == null ? undefined : json['role'],
+        'Content': json['content'] == null ? undefined : json['content'],
+        'Name': json['name'] == null ? undefined : json['name'],
     };
 }
 
@@ -80,9 +80,9 @@ export function CompletionMessagesInnerToJSON(value?: CompletionMessagesInner | 
     }
     return {
         
-        'role': value['role'],
-        'content': value['content'],
-        'name': value['name'],
+        'role': value['Role'],
+        'content': value['Content'],
+        'name': value['Name'],
     };
 }
 
