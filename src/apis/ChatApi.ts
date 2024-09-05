@@ -58,7 +58,7 @@ export interface ChatApiInterface {
 /**
  * 
  */
-export class ChatApi extends runtime.BaseAPI implements ChatApiInterface {
+export class ChatApi extends runtime.SuadaClient implements ChatApiInterface {
 
     /**
      * Create chat completion

@@ -22,14 +22,16 @@ The code below shows how to get started using the chat completions API.
 ```js
 import Suada from 'suada';
 
-const client = new Suada({
-  apiKey: process.env['SUADA_API_KEY'],
-});
+const config = new Configuration({
+  accessToken: process.env.["SUADA_ACCESS_TOKEN"]
+})
+
+const client = new SuadaClient(config)
 
 async function main() {
-  const chatCompletion = await client.chat.completions.create({
-    messages: [{ role: 'user', content: 'Say this is a test' }],
-    model: 'suada-v1',
+  const chatCompletion = await client.generate({
+    model: "suada-v1",
+    messages: [{ role: 'user', content: 'Say this is a test' }]
   });
 }
 
@@ -43,10 +45,14 @@ We provide support for streaming responses using Server Sent Events (SSE).
 ```ts
 import Suada from 'suada';
 
-const client = new Suada();
+const config = new Configuration({
+  accessToken: process.env.["SUADA_ACCESS_TOKEN"]
+})
+
+const client = new SuadaClient(config)
 
 async function main() {
-  const stream = await client.chat.completions.create({
+  const chatCompletion = await client.generate({
     model: 'suada-v1',
     messages: [{ role: 'user', content: 'Say this is a test' }],
     stream: true,
@@ -70,16 +76,18 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Suada from 'suada';
 
-const client = new Suada({
-  apiKey: process.env['SUADA_API_KEY'], // This is the default and can be omitted
-});
+const config = new Configuration({
+  accessToken: process.env.["SUADA_ACCESS_TOKEN"]
+})
+
+const client = new SuadaClient(config)
 
 async function main() {
   const params: Suada.Chat.ChatCompletionCreateParams = {
     messages: [{ role: 'user', content: 'Say this is a test' }],
     model: 'suada-v1',
   };
-  const chatCompletion: Suada.Chat.ChatCompletion = await client.chat.completions.create(params);
+  const chatCompletion: Suada.Chat.ChatCompletion = await client.generate(params);
 }
 
 main();
@@ -111,7 +119,7 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 import { fetch } from 'undici'; // as one example
 import Suada from 'suada';
 
-const client = new Suada({
+const client = new SuadaClient({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);

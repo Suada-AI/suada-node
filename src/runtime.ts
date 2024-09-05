@@ -89,7 +89,7 @@ export const DefaultConfig = new Configuration();
 /**
  * This is the base class for all generated API classes.
  */
-export class BaseAPI {
+export class SuadaClient {
 
     private static readonly jsonRegex = new RegExp('^(:?application\/json|[^;/ \t]+\/[^;/ \t]+[+]json)[ \t]*(:?;.*)?$', 'i');
     private middleware: Middleware[];
@@ -98,18 +98,18 @@ export class BaseAPI {
         this.middleware = configuration.middleware;
     }
 
-    withMiddleware<T extends BaseAPI>(this: T, ...middlewares: Middleware[]) {
+    withMiddleware<T extends SuadaClient>(this: T, ...middlewares: Middleware[]) {
         const next = this.clone<T>();
         next.middleware = next.middleware.concat(...middlewares);
         return next;
     }
 
-    withPreMiddleware<T extends BaseAPI>(this: T, ...preMiddlewares: Array<Middleware['pre']>) {
+    withPreMiddleware<T extends SuadaClient>(this: T, ...preMiddlewares: Array<Middleware['pre']>) {
         const middlewares = preMiddlewares.map((pre) => ({ pre }));
         return this.withMiddleware<T>(...middlewares);
     }
 
-    withPostMiddleware<T extends BaseAPI>(this: T, ...postMiddlewares: Array<Middleware['post']>) {
+    withPostMiddleware<T extends SuadaClient>(this: T, ...postMiddlewares: Array<Middleware['post']>) {
         const middlewares = postMiddlewares.map((post) => ({ post }));
         return this.withMiddleware<T>(...middlewares);
     }
@@ -128,7 +128,7 @@ export class BaseAPI {
         if (!mime) {
             return false;
         }
-        return BaseAPI.jsonRegex.test(mime);
+        return SuadaClient.jsonRegex.test(mime);
     }
 
     protected async request(context: RequestOpts, initOverrides?: RequestInit | InitOverrideFunction): Promise<Response> {
@@ -241,7 +241,7 @@ export class BaseAPI {
      * Create a shallow clone of `this` by constructing a new instance
      * and then shallow cloning data members.
      */
-    private clone<T extends BaseAPI>(this: T): T {
+    private clone<T extends SuadaClient>(this: T): T {
         const constructor = this.constructor as any;
         const next = new constructor(this.configuration);
         next.middleware = this.middleware.slice();
