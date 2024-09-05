@@ -16,8 +16,6 @@
 import * as runtime from '../runtime';
 import type {
   Completion,
-  CompletionMessagesInner,
-  CompletionModelEnum,
   CompletionResult,
 } from '../models/index';
 import {
@@ -51,14 +49,14 @@ export interface ChatApiInterface {
     /**
      * Create chat completion
      */
-    generate(model: CompletionModelEnum, messages: Array<CompletionMessagesInner>, temperature?: number | null, top_p?: number | null, frequency_penalty?: number | null, presence_penalty?: number | null, stop?: Array<string> | null, max_tokens?: number | null, n?: number | null, stream?: boolean | null, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompletionResult>;
+    generate(completion: Completion, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompletionResult>;
 
 }
 
 /**
  * 
  */
-export class SuadaClient extends runtime.BaseAPI implements ChatApiInterface {
+export class ChatApi extends runtime.SuadaClient implements ChatApiInterface {
 
     /**
      * Create chat completion
@@ -99,12 +97,8 @@ export class SuadaClient extends runtime.BaseAPI implements ChatApiInterface {
     /**
      * Create chat completion
      */
-    async generate(model: CompletionModelEnum, messages: Array<CompletionMessagesInner>, temperature?: number | null, top_p?: number | null, frequency_penalty?: number | null, presence_penalty?: number | null, stop?: Array<string> | null, max_tokens?: number | null, n?: number | null, stream?: boolean | null, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompletionResult> {
-        const response = await this.generateRaw({ completion: {
-            model: model,
-            messages: messages,
-            temperature: temperature,
-        } }, initOverrides);
+    async generate(completion: Completion, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompletionResult> {
+        const response = await this.generateRaw({ completion: completion }, initOverrides);
         return await response.value();
     }
 
