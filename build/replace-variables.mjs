@@ -35,10 +35,12 @@ function processFilesInDirectory(directoryPath) {
     files.forEach((file) => {
       const filePath = join(directoryPath, file);
 
-      if (statSync(filePath).isDirectory()) {
-        processFilesInDirectory(filePath);
-      } else if (filePath.endsWith('.ts')) {
-        replaceInFile(filePath);
+      if (!filePath.includes('node_modules') || !filePath.includes('dist') || !filePath.includes('build')) {
+        if (statSync(filePath).isDirectory()) {
+          processFilesInDirectory(filePath);
+        } else if (filePath.endsWith('.ts')) {
+          replaceInFile(filePath);
+        }
       }
     });
   });
