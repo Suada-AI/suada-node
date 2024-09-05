@@ -50,21 +50,3 @@ jobs:
       # Build the package (optional - only if your package needs to be built before publishing)
       - name: Build package
         run: npm run build
-
-      # Publish to npm
-      - name: Publish to npm
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      # Optional: Create GitHub release
-      - name: Create a Release
-        id: create_release
-        uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          draft: true
-          tag_name: ${{ github.ref }}
-          title: Release ${{ github.ref_name }}
-          prerelease: false
-          automatic_release_tag: ${{ github.ref_name }}
