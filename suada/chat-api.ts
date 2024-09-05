@@ -41,9 +41,9 @@ export const ChatApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        completions: async (completion: Completion, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        suada: async (completion: Completion, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'completion' is not null or undefined
-            assertParamExists('completions', 'completion', completion)
+            assertParamExists('suada', 'completion', completion)
             const localVarPath = `/v1/chat/completions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -91,10 +91,10 @@ export const ChatApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async completions(completion: Completion, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CompletionResult>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.completions(completion, options);
+        async suada(completion: Completion, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CompletionResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.suada(completion, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ChatApi.completions']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ChatApi.suada']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -110,12 +110,12 @@ export const ChatApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @summary Create chat completion
-         * @param {ChatApiCompletionsRequest} requestParameters Request parameters.
+         * @param {ChatApiSuadaRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        completions(requestParameters: ChatApiCompletionsRequest, options?: RawAxiosRequestConfig): AxiosPromise<CompletionResult> {
-            return localVarFp.completions(requestParameters.completion, options).then((request) => request(axios, basePath));
+        suada(requestParameters: ChatApiSuadaRequest, options?: RawAxiosRequestConfig): AxiosPromise<CompletionResult> {
+            return localVarFp.suada(requestParameters.completion, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -134,20 +134,20 @@ export interface ChatApiInterface {
      * @throws {RequiredError}
      * @memberof ChatApiInterface
      */
-    completions(completion: Completion, options?: RawAxiosRequestConfig): AxiosPromise<CompletionResult>;
+    suada(completion: Completion, options?: RawAxiosRequestConfig): AxiosPromise<CompletionResult>;
 
 }
 
 /**
- * Request parameters for completions operation in ChatApi.
+ * Request parameters for suada operation in ChatApi.
  * @export
- * @interface ChatApiCompletionsRequest
+ * @interface ChatApiSuadaRequest
  */
-export interface ChatApiCompletionsRequest {
+export interface ChatApiSuadaRequest {
     /**
      * 
      * @type {Completion}
-     * @memberof ChatApiCompletions
+     * @memberof ChatApiSuada
      */
     readonly completion: Completion
 }
@@ -162,15 +162,15 @@ export class chat extends Suada implements ChatApiInterface {
     /**
      * 
      * @summary Create chat completion
-     * @param {ChatApiCompletionsRequest} requestParameters Request parameters.
+     * @param {ChatApiSuadaRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatApi
      */
 
     // @ts-ignore
-    public completions(requestParameters: ChatApiCompletionsRequest, options?: RawAxiosRequestConfig) {
-        return ChatApiFp(this.configuration).completions(requestParameters.completion, options).then((request) => request(this.axios, this.basePath));
+    public suada(requestParameters: ChatApiSuadaRequest, options?: RawAxiosRequestConfig) {
+        return ChatApiFp(this.configuration).suada(requestParameters.completion, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
