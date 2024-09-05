@@ -29,7 +29,7 @@ import type { Completion } from '../suada-models';
 // @ts-ignore
 import type { CompletionResult } from '../suada-models';
 /**
- * chat - axios parameter creator
+ * Suada - axios parameter creator
  * @export
  */
 export const ChatApiAxiosParamCreator = function (configuration?: Configuration) {
@@ -78,7 +78,7 @@ export const ChatApiAxiosParamCreator = function (configuration?: Configuration)
 };
 
 /**
- * chat - functional programming interface
+ * Suada - functional programming interface
  * @export
  */
 export const ChatApiFp = function(configuration?: Configuration) {
@@ -101,7 +101,7 @@ export const ChatApiFp = function(configuration?: Configuration) {
 };
 
 /**
- * chat - factory interface
+ * Suada - factory interface
  * @export
  */
 export const ChatApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
@@ -121,7 +121,7 @@ export const ChatApiFactory = function (configuration?: Configuration, basePath?
 };
 
 /**
- * chat - interface
+ * Suada - interface
  * @export
  * @interface ChatApi
  */
@@ -153,12 +153,12 @@ export interface ChatApiSuadaRequest {
 }
 
 /**
- * chat - object-oriented interface
+ * Suada - object-oriented interface
  * @export
  * @class ChatApi
  * @extends {Suada}
  */
-export class chat extends Suada implements ChatApiInterface {
+export class Suada extends Suada implements ChatApiInterface {
     /**
      * 
      * @summary Create chat completion
@@ -167,8 +167,6 @@ export class chat extends Suada implements ChatApiInterface {
      * @throws {RequiredError}
      * @memberof ChatApi
      */
-
-    // @ts-ignore
     public suada(requestParameters: ChatApiSuadaRequest, options?: RawAxiosRequestConfig) {
         return ChatApiFp(this.configuration).suada(requestParameters.completion, options).then((request) => request(this.axios, this.basePath));
     }

@@ -1,6 +1,6 @@
 {
   "name": "suada",
-  "version": "1.0.0-rc15",
+  "version": "1.0.0-rc16",
   "description": "The official TypeScript library for the Suada API",
   "author": "Suada <hello@suada.ai>",
   "repository": "github:suada-ai/suada-node",
@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
-    "build": "tsc && tsc -p tsconfig.esm.json",
+    "build": "tsc && tsc -p tsconfig.esm.json && node build/replace-variables.mjs",
     "prepare": "npm run build"
   },
   "dependencies": {
