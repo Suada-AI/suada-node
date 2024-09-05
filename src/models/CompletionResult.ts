@@ -61,7 +61,7 @@ export interface CompletionResult {
      * @type {string}
      * @memberof CompletionResult
      */
-    systemFingerprint?: string;
+    system_fingerprint?: string;
     /**
      * 
      * @type {Array<CompletionResultChoicesInner>}
@@ -97,7 +97,7 @@ export function CompletionResultFromJSONTyped(json: any, ignoreDiscriminator: bo
         'object': json['object'] == null ? undefined : json['object'],
         'created': json['created'] == null ? undefined : json['created'],
         'model': json['model'] == null ? undefined : json['model'],
-        'systemFingerprint': json['system_fingerprint'] == null ? undefined : json['system_fingerprint'],
+        'system_fingerprint': json['system_fingerprint'] == null ? undefined : json['system_fingerprint'],
         'choices': json['choices'] == null ? undefined : ((json['choices'] as Array<any>).map(CompletionResultChoicesInnerFromJSON)),
         'usage': json['usage'] == null ? undefined : CompletionResultUsageFromJSON(json['usage']),
     };
@@ -113,7 +113,7 @@ export function CompletionResultToJSON(value?: CompletionResult | null): any {
         'object': value['object'],
         'created': value['created'],
         'model': value['model'],
-        'system_fingerprint': value['systemFingerprint'],
+        'system_fingerprint': value['system_fingerprint'],
         'choices': value['choices'] == null ? undefined : ((value['choices'] as Array<any>).map(CompletionResultChoicesInnerToJSON)),
         'usage': CompletionResultUsageToJSON(value['usage']),
     };

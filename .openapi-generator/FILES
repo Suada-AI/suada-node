@@ -1,6 +1,5 @@
 .gitignore
 .npmignore
-README.md
 package.json
 src/apis/ChatApi.ts
 src/apis/index.ts

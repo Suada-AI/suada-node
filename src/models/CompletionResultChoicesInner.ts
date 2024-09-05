@@ -49,7 +49,7 @@ export interface CompletionResultChoicesInner {
      * @type {string}
      * @memberof CompletionResultChoicesInner
      */
-    finishReason?: string;
+    finish_reason?: string;
 }
 
 /**
@@ -72,7 +72,7 @@ export function CompletionResultChoicesInnerFromJSONTyped(json: any, ignoreDiscr
         'index': json['index'] == null ? undefined : json['index'],
         'message': json['message'] == null ? undefined : CompletionResultChoicesInnerMessageFromJSON(json['message']),
         'logprobs': json['logprobs'] == null ? undefined : json['logprobs'],
-        'finishReason': json['finish_reason'] == null ? undefined : json['finish_reason'],
+        'finish_reason': json['finish_reason'] == null ? undefined : json['finish_reason'],
     };
 }
 
@@ -85,7 +85,7 @@ export function CompletionResultChoicesInnerToJSON(value?: CompletionResultChoic
         'index': value['index'],
         'message': CompletionResultChoicesInnerMessageToJSON(value['message']),
         'logprobs': value['logprobs'],
-        'finish_reason': value['finishReason'],
+        'finish_reason': value['finish_reason'],
     };
 }
 

@@ -25,7 +25,7 @@ import {
     CompletionResultToJSON,
 } from '../models/index';
 
-export interface ChatCompletionsRequest {
+export interface GenerateRequest {
     completion: Completion;
 }
 
@@ -44,28 +44,28 @@ export interface ChatApiInterface {
      * @throws {RequiredError}
      * @memberof ChatApiInterface
      */
-    chatCompletionsRaw(requestParameters: ChatCompletionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CompletionResult>>;
+    generateRaw(requestParameters: GenerateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CompletionResult>>;
 
     /**
      * Create chat completion
      */
-    chatCompletions(requestParameters: ChatCompletionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompletionResult>;
+    generate(completion: Completion, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompletionResult>;
 
 }
 
 /**
  * 
  */
-export class ChatApi extends runtime.BaseAPI implements ChatApiInterface {
+export class SuadaClient extends runtime.BaseAPI implements ChatApiInterface {
 
     /**
      * Create chat completion
      */
-    async chatCompletionsRaw(requestParameters: ChatCompletionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CompletionResult>> {
+    async generateRaw(requestParameters: GenerateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CompletionResult>> {
         if (requestParameters['completion'] == null) {
             throw new runtime.RequiredError(
                 'completion',
-                'Required parameter "completion" was null or undefined when calling chatCompletions().'
+                'Required parameter "completion" was null or undefined when calling generate().'
             );
         }
 
@@ -97,8 +97,8 @@ export class ChatApi extends runtime.BaseAPI implements ChatApiInterface {
     /**
      * Create chat completion
      */
-    async chatCompletions(requestParameters: ChatCompletionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompletionResult> {
-        const response = await this.chatCompletionsRaw(requestParameters, initOverrides);
+    async generate(completion: Completion, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompletionResult> {
+        const response = await this.generateRaw({ completion: completion }, initOverrides);
         return await response.value();
     }
 

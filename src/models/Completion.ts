@@ -49,19 +49,19 @@ export interface Completion {
      * @type {number}
      * @memberof Completion
      */
-    topP?: number | null;
+    top_p?: number | null;
     /**
      * Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
      * @type {number}
      * @memberof Completion
      */
-    frequencyPenalty?: number | null;
+    frequency_penalty?: number | null;
     /**
      * Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
      * @type {number}
      * @memberof Completion
      */
-    presencePenalty?: number | null;
+    presence_penalty?: number | null;
     /**
      * Up to 4 sequences where the API will stop generating further tokens.
      * @type {Array<string>}
@@ -73,7 +73,7 @@ export interface Completion {
      * @type {number}
      * @memberof Completion
      */
-    maxTokens?: number | null;
+    max_tokens?: number | null;
     /**
      * How many chat completion choices to generate for each input message. Note that you will be charged based on the number of generated tokens across all of the choices. Keep n as 1 to minimize costs.
      * @type {number}
@@ -120,11 +120,11 @@ export function CompletionFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'model': json['model'],
         'messages': ((json['messages'] as Array<any>).map(CompletionMessagesInnerFromJSON)),
         'temperature': json['temperature'] == null ? undefined : json['temperature'],
-        'topP': json['top_p'] == null ? undefined : json['top_p'],
-        'frequencyPenalty': json['frequency_penalty'] == null ? undefined : json['frequency_penalty'],
-        'presencePenalty': json['presence_penalty'] == null ? undefined : json['presence_penalty'],
+        'top_p': json['top_p'] == null ? undefined : json['top_p'],
+        'frequency_penalty': json['frequency_penalty'] == null ? undefined : json['frequency_penalty'],
+        'presence_penalty': json['presence_penalty'] == null ? undefined : json['presence_penalty'],
         'stop': json['stop'] == null ? undefined : json['stop'],
-        'maxTokens': json['max_tokens'] == null ? undefined : json['max_tokens'],
+        'max_tokens': json['max_tokens'] == null ? undefined : json['max_tokens'],
         'n': json['n'] == null ? undefined : json['n'],
         'stream': json['stream'] == null ? undefined : json['stream'],
     };
@@ -139,11 +139,11 @@ export function CompletionToJSON(value?: Completion | null): any {
         'model': value['model'],
         'messages': ((value['messages'] as Array<any>).map(CompletionMessagesInnerToJSON)),
         'temperature': value['temperature'],
-        'top_p': value['topP'],
-        'frequency_penalty': value['frequencyPenalty'],
-        'presence_penalty': value['presencePenalty'],
+        'top_p': value['top_p'],
+        'frequency_penalty': value['frequency_penalty'],
+        'presence_penalty': value['presence_penalty'],
         'stop': value['stop'],
-        'max_tokens': value['maxTokens'],
+        'max_tokens': value['max_tokens'],
         'n': value['n'],
         'stream': value['stream'],
     };
