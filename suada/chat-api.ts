@@ -114,8 +114,8 @@ export const ChatApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        generate(requestParameters: ChatApiGenerateRequest, options?: RawAxiosRequestConfig): AxiosPromise<CompletionResult> {
-            return localVarFp.generate(requestParameters.completion, options).then((request) => request(axios, basePath));
+        generate(requestParameters: Completion, options?: RawAxiosRequestConfig): AxiosPromise<CompletionResult> {
+            return localVarFp.generate(requestParameters, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -139,20 +139,6 @@ export interface ChatApiInterface {
 }
 
 /**
- * Request parameters for generate operation in ChatApi.
- * @export
- * @interface ChatApiGenerateRequest
- */
-export interface ChatApiGenerateRequest {
-    /**
-     * 
-     * @type {Completion}
-     * @memberof ChatApiGenerate
-     */
-    readonly completion: Completion
-}
-
-/**
  * SuadaClient - object-oriented interface
  * @export
  * @class ChatApi
@@ -162,15 +148,15 @@ export class SuadaClient extends Suada implements ChatApiInterface {
     /**
      * 
      * @summary Create chat completion
-     * @param {ChatApiGenerateRequest} requestParameters Request parameters.
+     * @param {Completion} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChatApi
      */
 
     // @ts-ignore
-    public generate(requestParameters: ChatApiGenerateRequest, options?: RawAxiosRequestConfig) {
-        return ChatApiFp(this.configuration).generate(requestParameters.completion, options).then((request) => request(this.axios, this.basePath));
+    public generate(requestParameters: Completion, options?: RawAxiosRequestConfig) {
+        return ChatApiFp(this.configuration).generate(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
