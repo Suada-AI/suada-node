@@ -1,7 +1,7 @@
 import { readFile, writeFile, readdir, statSync } from 'fs';
 import { join } from 'path';
 
-const rootDir = '../../suada_sdks/node'; // Change this to the root directory of your project
+const rootDir = './'; // Change this to the root directory of your project
 const searchPattern = 'ChatApi ';
 const replacePattern = 'chat ';
 
