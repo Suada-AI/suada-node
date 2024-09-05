@@ -167,6 +167,7 @@ export class chat extends Suada implements ChatApiInterface {
      * @throws {RequiredError}
      * @memberof ChatApi
      */
+
     // @ts-ignore
     public completions(requestParameters: ChatApiCompletionsRequest, options?: RawAxiosRequestConfig) {
         return ChatApiFp(this.configuration).completions(requestParameters.completion, options).then((request) => request(this.axios, this.basePath));
