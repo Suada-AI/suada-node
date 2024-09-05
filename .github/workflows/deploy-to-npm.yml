@@ -15,28 +15,6 @@ jobs:
       # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
-      
-      # Fetch all tags
-      - name: Fetch all tags
-        run: git fetch --tags
-      
-      # Verify that the latest tag matches the given regex
-      - name: Check for matching tag
-        id: check_tag
-        run: |
-          # Get the latest tag
-          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
-          
-          # Define the regex pattern
-          pattern='^v\[[0-9]+\]\.\[[0-9]+\]\.\[[0-9]+\]\.-rc\[[0-9]+\]\[[0-9]+\]$'
-          
-          if [[ "$latest_tag" =~ $pattern ]]; then
-            echo "Tag matches pattern: $latest_tag"
-            echo "::set-output name=tag::$latest_tag"
-          else
-            echo "Tag does not match the pattern."
-            exit 1  # Fail the job if the tag doesn't match
-          fi
 
       # Setup Node.js environment
       - name: Setup Node.js
