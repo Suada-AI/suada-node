@@ -2,9 +2,7 @@ name: Build for npm
 
 on:
   pull_request:
-    types: [closed]
-    branches:  
-      - main
+    types: [opened, reopened, synchronize]
 
 jobs:
   publish:
