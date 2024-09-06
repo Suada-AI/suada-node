@@ -20,7 +20,7 @@ The code below shows how to get started using the chat completions API.
 
 <!-- prettier-ignore -->
 ```js
-import Suada from 'suada';
+import { Configuration, SuadaClient } from 'suada';
 
 const config = new Configuration({
   accessToken: process.env.["SUADA_ACCESS_TOKEN"]
@@ -43,7 +43,7 @@ main();
 We provide support for streaming responses using Server Sent Events (SSE).
 
 ```ts
-import Suada from 'suada';
+import { Configuration, SuadaClient } from 'suada';
 
 const config = new Configuration({
   accessToken: process.env.["SUADA_ACCESS_TOKEN"]
@@ -74,7 +74,7 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import Suada from 'suada';
+import { Configuration, SuadaClient } from 'suada';
 
 const config = new Configuration({
   accessToken: process.env.["SUADA_ACCESS_TOKEN"]
