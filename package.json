@@ -2,10 +2,12 @@
   "name": "suada",
   "version": "1.0.0-rc26",
   "description": "OpenAPI client for suada",
-  "author": "OpenAPI-Generator",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+  "author": "Suada AI <hello@suada.ai> (https://suada.ai)",
+  "homepage": "https://suada.ai",
+  "repository": "github:Suada-AI/suada-node",
+  "bugs": {
+    "url": "https://github.com/Suada-AI/suada-node/issues",
+    "email": "hello@suada.ai"
   },
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
